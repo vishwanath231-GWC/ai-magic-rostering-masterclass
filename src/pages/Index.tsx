@@ -119,13 +119,14 @@ const Index = () => {
               Watch our teaser to see what you'll learn in the masterclass
             </p>
             <div className="aspect-video overflow-hidden rounded-xl border border-border shadow-lg">
-              <iframe
+              <iframe className="h-full w-full" src="https://www.youtube.com/embed/emuomQTY-pY?si=GxWI-rfjG3uH4zJZ" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+              {/* <iframe
                 className="h-full w-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                src="https://youtu.be/emuomQTY-pY?si=gG8MSFXbbIqmcjCR"
                 title="Masterclass Teaser"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-              />
+              /> */}
             </div>
           </div>
         </div>
