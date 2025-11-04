@@ -22,16 +22,54 @@ import {
   ArrowRight,
   Linkedin,
   Globe,
+  Clock,
+  AlertCircle,
+  Eye,
+  Zap,
+  Check,
 } from "lucide-react";
 import hostSubash from "@/assets/host-subash.jpg";
 import hostMamtha from "@/assets/host-mamtha.jpg";
 import heroBackground from "@/assets/hero-background.jpg";
 import QuoteBox from "./QuoteBox";
+import { useState } from "react";
+import RegisterForm from "./RegisterForm";
+import RegisterFormTwo from "./RegisterFormTwo";
 
 const Index = () => {
   const scrollToRegister = () => {
     window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
   };
+
+  const [checkedItems, setCheckedItems] = useState({
+    manual: false,
+    compliance: false,
+    dissatisfaction: false,
+    visibility: false,
+    stress: false,
+    dashboard: false
+  });
+
+  const challenges = [
+    { id: 'manual', label: 'Time-consuming manual scheduling', icon: Clock, color: 'text-blue-600' },
+    { id: 'compliance', label: 'Risk of non-compliance with HR policies', icon: AlertCircle, color: 'text-red-600' },
+    { id: 'dissatisfaction', label: 'Employee dissatisfaction due to unfair shifts', icon: Users, color: 'text-orange-600' },
+    { id: 'visibility', label: 'No clear visibility into future workforce needs', icon: Eye, color: 'text-purple-600' },
+    { id: 'stress', label: 'Stress of last-minute changes', icon: Zap, color: 'text-yellow-600' },
+    { id: 'dashboard', label: 'Real-time visibility & control with AI dashboards', icon: Zap, color: 'text-green-600' }
+  ];
+
+  const toggleCheck = (id) => {
+    setCheckedItems(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
+
+  const selectedChallenges = Object.entries(checkedItems)
+        .filter(([, checked]) => checked)
+        .map(([id]) => challenges.find(c => c.id === id)?.label)
+        .join("; ");
 
   return (
     <div className="min-h-screen bg-background">
@@ -65,14 +103,7 @@ const Index = () => {
               and{" "}
               <span className="font-semibold">Mamtha (Assistant Director)</span>
             </p>
-            <Button
-              size="lg"
-              onClick={scrollToRegister}
-              className="group h-14 gap-2 px-8 text-lg font-semibold shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-            >
-              Reserve Your Spot Now
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Button>
+            <RegisterForm selectedChallenges={selectedChallenges} />
           </div>
         </div>
       </section>
@@ -183,6 +214,63 @@ const Index = () => {
         </div>
       </section>
 
+      <section className="bg-gradient-to-br from-accent to-secondary py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-6xl text-center">
+            <h2 className="mb-6 text-3xl font-bold text-foreground md:text-4xl">
+              Struggling with this outcome?
+            </h2>
+            <div className="grid gap-4 md:grid-cols-2 w-full">
+          {challenges.map((item) => {
+            const IconComponent = item.icon;
+            const isChecked = checkedItems[item.id];
+            
+            return (
+              <label
+                key={item.id}
+                className={`flex items-center p-4 rounded-lg border-2 cursor-pointer transition-all duration-200
+                  border-[#8649ed] hover:border-slate-500
+                `}
+              >
+                {/* Custom Checkbox */}
+                <div
+                  className={`flex items-center justify-center w-6 h-6 rounded-md border-2 mr-4 flex-shrink-0 transition-all ${
+                    isChecked
+                      ? 'bg-green-500 border-green-500 shadow-lg shadow-green-500/50'
+                      : 'border-slate-300 bg-white hover:border-slate-300'
+                  }`}
+                >
+                  {isChecked && (
+                    <Check className="w-4 h-4 text-white" strokeWidth={3} />
+                  )}
+                </div>
+
+                {/* Icon and Text */}
+                <div className="flex items-center gap-3 flex-grow">
+                  <IconComponent className={`w-5 h-5 flex-shrink-0 ${item.color}`} />
+                  <span className={`font-medium transition-colors ${
+                    isChecked ? 'text-black' : 'text-black'
+                  }`}>
+                    {item.label}
+                  </span>
+                </div>
+
+                {/* Hidden native checkbox */}
+                <input
+                  type="checkbox"
+                  checked={isChecked}
+                  onChange={() => toggleCheck(item.id)}
+                  className="hidden"
+                />
+              </label>
+            );
+          })}
+        </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* Applicable Sectors */}
       <section className="bg-muted py-16 md:py-24">
         <div className="container mx-auto px-4">
@@ -253,7 +341,7 @@ const Index = () => {
                       <img
                         src={hostSubash}
                         alt="Subash - CTO"
-                        className="h-48 w-48 object-cover"
+                        className="h-48 w-48 object-cover object-top"
                       />
                     </div>
                   </div>
@@ -481,15 +569,8 @@ const Index = () => {
               Join the AI Magic Rostering Masterclass and transform your
               workforce planning today
             </p>
-            <Button
-              size="lg"
-              variant="secondary"
-              onClick={scrollToRegister}
-              className="group h-14 gap-2 px-8 text-lg font-semibold shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-            >
-              Register Now – Limited Seats Available
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Button>
+            
+            <RegisterFormTwo selectedChallenges={selectedChallenges} />
             {/* <p className="mt-6 text-sm text-primary-foreground/70">
               No credit card required • Completely free • Certificate included
             </p> */}
