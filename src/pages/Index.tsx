@@ -100,9 +100,12 @@ const Index = () => {
               Learn how to build your first AI Agent for free
             </p>
             <p className="mb-8 text-base text-foreground/70 md:text-lg">
-              Conducted by <span className="font-semibold">Subash (CTO)</span>{" "}
+              Conducted by <span className="font-semibold">Subash (CTO)</span>
+              ,{" "}
+              <span className="font-semibold">Mamtha (Assistant Director)</span>{" "}
               and{" "}
-              <span className="font-semibold">Mamtha (Assistant Director)</span>
+              <span className="font-semibold">Prasanna Srinivasan (COO)</span>
+
             </p>
             <RegisterForm selectedChallenges="" />
           </div>
@@ -360,7 +363,7 @@ const Index = () => {
                     complexity when data becomes actionable. My goal is to
                     simplify technology so teams can focus on impact, not
                     infrastructure. When technology is built right, it doesn’t
-                    just move data—it moves people and businesses forward. The
+                    just move data, it moves people and businesses forward. The
                     future belongs to those who see smarter, decide faster, and
                     act with confidence."
                   </p>
