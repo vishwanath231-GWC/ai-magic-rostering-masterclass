@@ -87,7 +87,7 @@ const Index = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-br from-secondary/95 to-accent/90" />
         <div className="container relative mx-auto px-4">
-          <div className="flex justify-start items-start mb-10">
+          <div className="flex justify-center items-center mb-10">
             <img src={LOGO} alt="LOGO" className="w-[250px]" />
           </div>
           <div className="mx-auto max-w-4xl text-center">
