@@ -103,7 +103,7 @@ const Index = () => {
               and{" "}
               <span className="font-semibold">Mamtha (Assistant Director)</span>
             </p>
-            <RegisterForm selectedChallenges={selectedChallenges} />
+            <RegisterForm selectedChallenges="" />
           </div>
         </div>
       </section>
@@ -140,10 +140,9 @@ const Index = () => {
               About the Masterclass
             </h2>
             <p className="text-lg leading-relaxed text-foreground/80">
-              This masterclass introduces the concept of AI-powered rostering
-              and how it transforms workforce planning, scheduling, and
-              productivity. Participants will gain hands-on experience building
-              their first AI agent completely free of cost.
+              This masterclass introduces the concept of <span className="font-bold text-black">AI-Powered Rostering</span> and how it transforms Workforce Planning, Scheduling, and
+              Productivity. Participants will gain hands-on experience building
+              their first AI agent completely FREE OF COST.
             </p>
           </div>
         </div>
@@ -234,7 +233,7 @@ const Index = () => {
                 `}
               >
                 {/* Custom Checkbox */}
-                <div
+                {/* <div
                   className={`flex items-center justify-center w-6 h-6 rounded-md border-2 mr-4 flex-shrink-0 transition-all ${
                     isChecked
                       ? 'bg-green-500 border-green-500 shadow-lg shadow-green-500/50'
@@ -244,7 +243,7 @@ const Index = () => {
                   {isChecked && (
                     <Check className="w-4 h-4 text-white" strokeWidth={3} />
                   )}
-                </div>
+                </div> */}
 
                 {/* Icon and Text */}
                 <div className="flex items-center gap-3 flex-grow">
@@ -282,19 +281,14 @@ const Index = () => {
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
               {[
                 {
-                  icon: Hospital,
-                  title: "Healthcare",
-                  description: "Nurse and staff scheduling",
+                  icon: Store,
+                  title: "Retail",
+                  description: "Demand-based workforce planning",
                 },
                 {
                   icon: Factory,
                   title: "Manufacturing",
                   description: "Shift planning and labor optimization",
-                },
-                {
-                  icon: Store,
-                  title: "Retail",
-                  description: "Demand-based workforce planning",
                 },
                 {
                   icon: Hotel,
@@ -305,6 +299,11 @@ const Index = () => {
                   icon: Laptop,
                   title: "IT Services",
                   description: "Project resource allocation",
+                },
+                {
+                  icon: Hospital,
+                  title: "Healthcare",
+                  description: "Nurse and staff scheduling",
                 },
               ].map((sector, index) => (
                 <div
@@ -332,7 +331,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-5xl">
             <h2 className="mb-12 text-center text-3xl font-bold text-foreground md:text-4xl">
-              Meet Your Hosts
+              Meet Your Speakers
             </h2>
             <div className="grid gap-8 md:grid-cols-2">
               <Card className="overflow-hidden border-border transition-all hover:shadow-xl">
@@ -354,7 +353,7 @@ const Index = () => {
                   </p>
                   <p className="text-center italic text-muted-foreground">
                     "I help enterprises evolve from being data-aware to truly
-                    AI-driven—turning information into a real competitive edge.
+                    AI driven turning information into a real competitive edge.
                     With over 200 successful implementations across DOMO,
                     Snowflake, and GCP, I’ve seen how clarity replaces
                     complexity when data becomes actionable. My goal is to
@@ -452,17 +451,17 @@ const Index = () => {
                 {
                   role: "Director of Tata group",
                   quote:
-                    "Hi Team, Greetings, and thank you for your mail. We acknowledge receipt of the AI-powered analytical reports, source code, and comprehensive project documentation. As discussed, please schedule the Knowledge Transfer (KT) session for system restoration at your earliest convenience. Additionally, we would like to confirm the sign-off on the Tool Management, Environmental Applications, and Intelligent Rostering Solutions modules. We appreciate your team’s ongoing support in fine-tuning and optimizing these AI-driven insights to ensure complete accuracy and reliability. We would also like to express our sincere gratitude to you, your team, and GWC management for the valuable support extended throughout this project. Your team’s deep understanding of our requirements, proactive communication, and commitment to delivering quality outcomes have been commendable. A special appreciation to the GWC team members for their professionalism and collaborative spirit, ensuring that every milestone was met as expected. Thank you once again, we look forward to our continued collaboration and many more successful engagements together.",
+                    "Hi Team, thank you for sharing the AI reports, source code, and documentation. Please schedule the KT session for system restoration soon. We confirm sign-off on the Tool Management, Environmental Applications, and Intelligent Rostering modules. Your team’s professionalism, accuracy, and collaboration have been exemplary. We truly appreciate the continued support and look forward to more successful engagements together.",
                 },
                 {
                   role: "MD, Head of Retail",
                   quote:
-                    "I wanted to take a moment to express my heartfelt appreciation for the exceptional support provided by the GWC team. Hi Team, I wanted to take a moment to express my heartfelt appreciation for the exceptional support provided by the GWC team. This evening, your team went above and beyond to help us address a business-critical issue for one of our key customers. Despite the challenging circumstances, the team demonstrated outstanding professionalism, commitment, and teamwork, qualities that truly set GWC apart. It isn’t always the case that partners invest this much effort and ownership, especially during critical moments. The GWC team has once again proven to be a trusted and dependable partner, and I’m sincerely grateful for your continued support. Thank you once again to the entire team, your responsiveness, expertise, and commitment make a real difference to our business.",
+                    "Hi Team, sincere thanks for your exceptional support in resolving a critical customer issue. Your professionalism, ownership, and teamwork truly stand out, especially under pressure. GWC continues to be a trusted and dependable partner. We deeply appreciate your responsiveness, expertise, and commitment. They make a real difference to our business success.",
                 },
                 {
                   role: "AVP of Toyota",
                   quote:
-                    "Hi Team, I would like to extend my sincere appreciation to the GWC team for the successful development and deployment of the AI Rostering Solution, seamlessly integrated with our Automation Sustaining Dashboard. Your collective efforts in understanding the business needs, designing intelligent scheduling logic, and ensuring a seamless transition from manual rostering to an AI-driven, automated platform are truly commendable. Great work, team — this marks another important step toward smarter, data-driven operations!",
+                    "Hi Team, heartfelt appreciation for successfully developing and deploying the AI Rostering Solution integrated with our Automation Dashboard. Your understanding of business needs and intelligent automation design ensured a smooth transition from manual to AI driven operations. Excellent work, a great step toward smarter, data-driven efficiency.",
                 },
               ].map((testimonial, index) => (
                 <Card
@@ -472,10 +471,9 @@ const Index = () => {
                   <CardContent className="p-6">
                     <Quote className="mb-4 h-10 w-10 text-accent" />
                     <div className="mb-6">
-                      <p className="text-foreground/80 h-[100px] overflow-hidden text-ellipsis line-clamp-4">
+                      <p className="text-foreground/80">
                         {testimonial.quote}
                       </p>
-                      <QuoteBox content={testimonial.quote} title={testimonial.role} />
                     </div>
                     <div>
                       <p className="font-semibold text-foreground">
@@ -505,7 +503,7 @@ const Index = () => {
                 <AccordionTrigger className="text-left font-semibold hover:no-underline">
                   Do I need technical skills to use AI rostering?
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
+                <AccordionContent className="text-[#f68b63] font-semibold">
                   No, it’s designed for HR and operations teams without coding knowledge.
                 </AccordionContent>
               </AccordionItem>
@@ -516,7 +514,7 @@ const Index = () => {
                 <AccordionTrigger className="text-left font-semibold hover:no-underline">
                   Can this work for my industry?
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
+                <AccordionContent className="text-[#f68b63] font-semibold">
                   Yes, AI rostering works for any industry it can easily fit your team’s scheduling needs.
                 </AccordionContent>
               </AccordionItem>
@@ -527,7 +525,7 @@ const Index = () => {
                 <AccordionTrigger className="text-left font-semibold hover:no-underline">
                   Will I get a recording of the webinar?
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
+                <AccordionContent className="text-[#f68b63] font-semibold">
                   Yes, you will get access to all the recordings.
                 </AccordionContent>
               </AccordionItem>
@@ -538,7 +536,7 @@ const Index = () => {
                 <AccordionTrigger className="text-left font-semibold hover:no-underline">
                   Is there a cost for the AI rostering tool?
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
+                <AccordionContent className="text-[#f68b63] font-semibold">
                   Yes, for that you need to get in touch with our team.
                 </AccordionContent>
               </AccordionItem>
@@ -549,7 +547,7 @@ const Index = () => {
                 <AccordionTrigger className="text-left font-semibold hover:no-underline">
                   How quickly can AI rostering be implemented?
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
+                <AccordionContent className="text-[#f68b63] font-semibold">
                   AI rostering can be implemented and start delivering results within a few weeks.
                 </AccordionContent>
               </AccordionItem>
@@ -571,7 +569,7 @@ const Index = () => {
               workforce planning today
             </p>
             
-            <RegisterFormTwo selectedChallenges={selectedChallenges} />
+            <RegisterFormTwo selectedChallenges="" />
             {/* <p className="mt-6 text-sm text-primary-foreground/70">
               No credit card required • Completely free • Certificate included
             </p> */}
