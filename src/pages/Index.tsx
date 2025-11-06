@@ -77,7 +77,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section
-        className="relative overflow-hidden bg-gradient-to-br from-secondary to-accent py-24 md:pt-20 md:pb-32"
+        className="relative overflow-hidden bg-gradient-to-br from-secondary to-accent pt-10 md:pb-32 md:pt-10 md:pb-32"
         style={{
           backgroundImage: `url(${heroBackground})`,
           backgroundSize: "cover",
@@ -87,7 +87,7 @@ const Index = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-br from-secondary/95 to-accent/90" />
         <div className="container relative mx-auto px-4">
-          <div className="flex justify-center items-center mb-10">
+          <div className="flex justify-start items-start mb-10">
             <img src={LOGO} alt="LOGO" className="w-[250px]" />
           </div>
           <div className="mx-auto max-w-4xl text-center">
