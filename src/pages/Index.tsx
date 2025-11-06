@@ -30,6 +30,7 @@ import {
 } from "lucide-react";
 import hostSubash from "@/assets/host-subash.jpg";
 import hostMamtha from "@/assets/host-mamtha.jpg";
+import hostThree from "@/assets/host-three.jpg";
 import heroBackground from "@/assets/hero-background.jpg";
 import QuoteBox from "./QuoteBox";
 import { useState } from "react";
@@ -403,6 +404,36 @@ const Index = () => {
                   </p>
                   <div className="flex justify-center items-center mt-3 gap-4">
                     <a href="https://www.linkedin.com/in/mamtha-shanmugam-43ba8016a/" target="_blank" rel="noopener noreferrer">
+                      <Linkedin />
+                    </a>
+                    <a href="https://www.gwcdata.ai/" target="_blank" rel="noopener noreferrer">
+                      <Globe />
+                    </a>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className="overflow-hidden border-border transition-all hover:shadow-xl">
+                <CardContent className="p-8">
+                  <div className="mb-6 flex justify-center">
+                    <div className="overflow-hidden rounded-2xl border-4 border-accent">
+                      <img
+                        src={hostThree}
+                        alt="Mamtha - Assistant Director"
+                        className="h-48 w-48 object-cover object-top"
+                      />
+                    </div>
+                  </div>
+                  <h3 className="mb-2 text-center text-2xl font-bold text-foreground">
+                    Prasanna Srinivasan
+                  </h3>
+                  <p className="mb-4 text-center text-lg font-medium text-primary">
+                    Chief Operating Officer, GWC DATA.AI
+                  </p>
+                  <p className="text-center italic text-muted-foreground">
+                    "I help enterprises turn ambitious strategies into tangible outcomes, ensuring every boardroom promise is flawlessly delivered. At GWC DATA.AI, I lead operations and execution across analytics, AI, and digital transformation, driving precision and pace. My focus is on building scalable systems and teams without losing the human touch. Operational excellence means enabling teams to execute with clarity, deliver confidently, and create enduring value. When execution aligns with vision, transformation becomes inevitable."
+                  </p>
+                  <div className="flex justify-center items-center mt-3 gap-4">
+                    <a href="https://www.linkedin.com/in/prasanna-srinivasan-a533b062/" target="_blank" rel="noopener noreferrer">
                       <Linkedin />
                     </a>
                     <a href="https://www.gwcdata.ai/" target="_blank" rel="noopener noreferrer">
