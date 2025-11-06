@@ -31,6 +31,7 @@ import {
 import hostSubash from "@/assets/host-subash.jpg";
 import hostMamtha from "@/assets/host-mamtha.jpg";
 import hostThree from "@/assets/host-three.jpg";
+import LOGO from "@/assets/logo.svg";
 import heroBackground from "@/assets/hero-background.jpg";
 import QuoteBox from "./QuoteBox";
 import { useState } from "react";
@@ -76,7 +77,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section
-        className="relative overflow-hidden bg-gradient-to-br from-secondary to-accent py-24 md:py-32"
+        className="relative overflow-hidden bg-gradient-to-br from-secondary to-accent py-24 md:pt-20 md:pb-32"
         style={{
           backgroundImage: `url(${heroBackground})`,
           backgroundSize: "cover",
@@ -86,6 +87,9 @@ const Index = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-br from-secondary/95 to-accent/90" />
         <div className="container relative mx-auto px-4">
+          <div className="flex justify-center items-center mb-10">
+            <img src={LOGO} alt="LOGO" className="w-[250px]" />
+          </div>
           <div className="mx-auto max-w-4xl text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-background/50 px-4 py-2 backdrop-blur-sm">
               <Sparkles className="h-4 w-4 text-primary" />
