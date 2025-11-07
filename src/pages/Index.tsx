@@ -134,12 +134,20 @@ const Index = () => {
             <p className="mb-4 text-xl text-foreground/80 md:text-2xl">
               Learn how to build your first AI Agent for free
             </p>
-            <p className="mb-8 text-base text-foreground/70 md:text-lg">
-              Conducted by <span className="font-semibold">Subash (CTO)</span>,{" "}
-              <span className="font-semibold">Mamtha (Assistant Director)</span>{" "}
-              and{" "}
-              <span className="font-semibold">Prasanna Srinivasan (COO)</span>
+            <p className="mb-8 text-base text-foreground/70 md:text-lg whitespace-nowrap">
+              Conducted by <span className="font-semibold">Subash (CTO)</span>,
+              <span className="font-semibold">
+                {" "}
+                Mamtha (Assistant Director)
+              </span>
+              ,<span className="font-semibold">
+                {" "}
+                Prasanna Srinivasan (COO)
+              </span>{" "}
+              and
+              <span className="font-semibold"> Shashank Ravikumar (CSO)</span>.
             </p>
+
             <RegisterForm selectedChallenges="" />
           </div>
         </div>
