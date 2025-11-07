@@ -31,6 +31,7 @@ import {
 import hostSubash from "@/assets/host-subash.jpg";
 import hostMamtha from "@/assets/host-mamtha.jpg";
 import hostThree from "@/assets/host-three.jpg";
+import hostshashank from "@/assets/host-shashank.jpg";
 import LOGO from "@/assets/logo.svg";
 import heroBackground from "@/assets/hero-background.jpg";
 import QuoteBox from "./QuoteBox";
@@ -49,29 +50,59 @@ const Index = () => {
     dissatisfaction: false,
     visibility: false,
     stress: false,
-    dashboard: false
+    dashboard: false,
   });
 
   const challenges = [
-    { id: 'manual', label: 'Time-consuming manual scheduling', icon: Clock, color: 'text-blue-600' },
-    { id: 'compliance', label: 'Risk of non-compliance with HR policies', icon: AlertCircle, color: 'text-red-600' },
-    { id: 'dissatisfaction', label: 'Employee dissatisfaction due to unfair shifts', icon: Users, color: 'text-orange-600' },
-    { id: 'visibility', label: 'No clear visibility into future workforce needs', icon: Eye, color: 'text-purple-600' },
-    { id: 'stress', label: 'Stress of last-minute changes', icon: Zap, color: 'text-yellow-600' },
-    { id: 'dashboard', label: 'Real-time visibility & control with AI dashboards', icon: Zap, color: 'text-green-600' }
+    {
+      id: "manual",
+      label: "Time-consuming manual scheduling",
+      icon: Clock,
+      color: "text-blue-600",
+    },
+    {
+      id: "compliance",
+      label: "Risk of non-compliance with HR policies",
+      icon: AlertCircle,
+      color: "text-red-600",
+    },
+    {
+      id: "dissatisfaction",
+      label: "Employee dissatisfaction due to unfair shifts",
+      icon: Users,
+      color: "text-orange-600",
+    },
+    {
+      id: "visibility",
+      label: "No clear visibility into future workforce needs",
+      icon: Eye,
+      color: "text-purple-600",
+    },
+    {
+      id: "stress",
+      label: "Stress of last-minute changes",
+      icon: Zap,
+      color: "text-yellow-600",
+    },
+    {
+      id: "dashboard",
+      label: "Real-time visibility & control with AI dashboards",
+      icon: Zap,
+      color: "text-green-600",
+    },
   ];
 
   const toggleCheck = (id) => {
-    setCheckedItems(prev => ({
+    setCheckedItems((prev) => ({
       ...prev,
-      [id]: !prev[id]
+      [id]: !prev[id],
     }));
   };
 
   const selectedChallenges = Object.entries(checkedItems)
-        .filter(([, checked]) => checked)
-        .map(([id]) => challenges.find(c => c.id === id)?.label)
-        .join("; ");
+    .filter(([, checked]) => checked)
+    .map(([id]) => challenges.find((c) => c.id === id)?.label)
+    .join("; ");
 
   return (
     <div className="min-h-screen bg-background">
@@ -104,12 +135,10 @@ const Index = () => {
               Learn how to build your first AI Agent for free
             </p>
             <p className="mb-8 text-base text-foreground/70 md:text-lg">
-              Conducted by <span className="font-semibold">Subash (CTO)</span>
-              ,{" "}
+              Conducted by <span className="font-semibold">Subash (CTO)</span>,{" "}
               <span className="font-semibold">Mamtha (Assistant Director)</span>{" "}
               and{" "}
               <span className="font-semibold">Prasanna Srinivasan (COO)</span>
-
             </p>
             <RegisterForm selectedChallenges="" />
           </div>
@@ -127,7 +156,12 @@ const Index = () => {
               Watch our teaser to see what you'll learn in the masterclass
             </p>
             <div className="aspect-video overflow-hidden rounded-xl border border-border shadow-lg">
-              <iframe className="h-full w-full" src="https://www.youtube.com/embed/emuomQTY-pY?si=GxWI-rfjG3uH4zJZ" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+              <iframe
+                className="h-full w-full"
+                src="https://www.youtube.com/embed/emuomQTY-pY?si=GxWI-rfjG3uH4zJZ"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              ></iframe>
               {/* <iframe
                 className="h-full w-full"
                 src="https://youtu.be/emuomQTY-pY?si=gG8MSFXbbIqmcjCR"
@@ -148,7 +182,9 @@ const Index = () => {
               About the Masterclass
             </h2>
             <p className="text-lg leading-relaxed text-foreground/80">
-              This masterclass introduces the concept of <span className="font-bold text-black">AI-Powered Rostering</span> and how it transforms Workforce Planning, Scheduling, and
+              This masterclass introduces the concept of{" "}
+              <span className="font-bold text-black">AI-Powered Rostering</span>{" "}
+              and how it transforms Workforce Planning, Scheduling, and
               Productivity. Participants will gain hands-on experience building
               their first AI agent completely FREE OF COST.
             </p>
@@ -229,19 +265,19 @@ const Index = () => {
               Struggling with this outcome?
             </h2>
             <div className="grid gap-4 md:grid-cols-2 w-full">
-          {challenges.map((item) => {
-            const IconComponent = item.icon;
-            const isChecked = checkedItems[item.id];
-            
-            return (
-              <label
-                key={item.id}
-                className={`flex items-center p-4 rounded-lg border-2 cursor-pointer transition-all duration-200
+              {challenges.map((item) => {
+                const IconComponent = item.icon;
+                const isChecked = checkedItems[item.id];
+
+                return (
+                  <label
+                    key={item.id}
+                    className={`flex items-center p-4 rounded-lg border-2 cursor-pointer transition-all duration-200
                   border-[#8649ed] hover:border-slate-500
                 `}
-              >
-                {/* Custom Checkbox */}
-                {/* <div
+                  >
+                    {/* Custom Checkbox */}
+                    {/* <div
                   className={`flex items-center justify-center w-6 h-6 rounded-md border-2 mr-4 flex-shrink-0 transition-all ${
                     isChecked
                       ? 'bg-green-500 border-green-500 shadow-lg shadow-green-500/50'
@@ -253,28 +289,31 @@ const Index = () => {
                   )}
                 </div> */}
 
-                {/* Icon and Text */}
-                <div className="flex items-center gap-3 flex-grow">
-                  <IconComponent className={`w-5 h-5 flex-shrink-0 ${item.color}`} />
-                  <span className={`font-medium transition-colors ${
-                    isChecked ? 'text-black' : 'text-black'
-                  }`}>
-                    {item.label}
-                  </span>
-                </div>
+                    {/* Icon and Text */}
+                    <div className="flex items-center gap-3 flex-grow">
+                      <IconComponent
+                        className={`w-5 h-5 flex-shrink-0 ${item.color}`}
+                      />
+                      <span
+                        className={`font-medium transition-colors ${
+                          isChecked ? "text-black" : "text-black"
+                        }`}
+                      >
+                        {item.label}
+                      </span>
+                    </div>
 
-                {/* Hidden native checkbox */}
-                <input
-                  type="checkbox"
-                  checked={isChecked}
-                  onChange={() => toggleCheck(item.id)}
-                  className="hidden"
-                />
-              </label>
-            );
-          })}
-        </div>
-
+                    {/* Hidden native checkbox */}
+                    <input
+                      type="checkbox"
+                      checked={isChecked}
+                      onChange={() => toggleCheck(item.id)}
+                      className="hidden"
+                    />
+                  </label>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
@@ -360,8 +399,8 @@ const Index = () => {
                     Chief Technology Officer, GWC DATA.AI
                   </p>
                   <p className="text-center italic text-muted-foreground">
-                    "I help enterprises evolve from being data-aware to truly
-                    AI driven turning information into a real competitive edge.
+                    "I help enterprises evolve from being data-aware to truly AI
+                    driven turning information into a real competitive edge.
                     With over 200 successful implementations across DOMO,
                     Snowflake, and GCP, I’ve seen how clarity replaces
                     complexity when data becomes actionable. My goal is to
@@ -372,10 +411,18 @@ const Index = () => {
                     act with confidence."
                   </p>
                   <div className="flex justify-center items-center mt-3 gap-4">
-                    <a href="https://www.linkedin.com/in/subash-ramu-92553784/" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://www.linkedin.com/in/subash-ramu-92553784/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Linkedin />
                     </a>
-                    <a href="https://www.gwcdata.ai/" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://www.gwcdata.ai/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Globe />
                     </a>
                   </div>
@@ -410,10 +457,18 @@ const Index = () => {
                     forward with clarity and purpose."
                   </p>
                   <div className="flex justify-center items-center mt-3 gap-4">
-                    <a href="https://www.linkedin.com/in/mamtha-shanmugam-43ba8016a/" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://www.linkedin.com/in/mamtha-shanmugam-43ba8016a/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Linkedin />
                     </a>
-                    <a href="https://www.gwcdata.ai/" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://www.gwcdata.ai/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Globe />
                     </a>
                   </div>
@@ -425,7 +480,7 @@ const Index = () => {
                     <div className="overflow-hidden rounded-2xl border-4 border-accent">
                       <img
                         src={hostThree}
-                        alt="Mamtha - Assistant Director"
+                        alt="Prasanna - Operating Officer"
                         className="h-48 w-48 object-cover object-top"
                       />
                     </div>
@@ -437,13 +492,78 @@ const Index = () => {
                     Chief Operating Officer, GWC DATA.AI
                   </p>
                   <p className="text-center italic text-muted-foreground">
-                    "I help enterprises turn ambitious strategies into tangible outcomes, ensuring every boardroom promise is flawlessly delivered. At GWC DATA.AI, I lead operations and execution across analytics, AI, and digital transformation, driving precision and pace. My focus is on building scalable systems and teams without losing the human touch. Operational excellence means enabling teams to execute with clarity, deliver confidently, and create enduring value. When execution aligns with vision, transformation becomes inevitable."
+                    "I help enterprises turn ambitious strategies into tangible
+                    outcomes, ensuring every boardroom promise is flawlessly
+                    delivered. At GWC DATA.AI, I lead operations and execution
+                    across analytics, AI, and digital transformation, driving
+                    precision and pace. My focus is on building scalable systems
+                    and teams without losing the human touch. Operational
+                    excellence means enabling teams to execute with clarity,
+                    deliver confidently, and create enduring value. When
+                    execution aligns with vision, transformation becomes
+                    inevitable."
                   </p>
                   <div className="flex justify-center items-center mt-3 gap-4">
-                    <a href="https://www.linkedin.com/in/prasanna-srinivasan-a533b062/" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://www.linkedin.com/in/prasanna-srinivasan-a533b062/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Linkedin />
                     </a>
-                    <a href="https://www.gwcdata.ai/" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://www.gwcdata.ai/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Globe />
+                    </a>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className="overflow-hidden border-border transition-all hover:shadow-xl">
+                <CardContent className="p-8">
+                  <div className="mb-6 flex justify-center">
+                    <div className="overflow-hidden rounded-2xl border-4 border-accent">
+                      <img
+                        src={hostshashank}
+                        alt="Mamtha - Assistant Director"
+                        className="h-48 w-48 object-cover object-top"
+                      />
+                    </div>
+                  </div>
+                  <h3 className="mb-2 text-center text-2xl font-bold text-foreground">
+                    Shashank Ravikumar
+                  </h3>
+
+                  <p className="mb-4 text-center text-lg font-medium text-primary">
+                    Chief Strategy Officer, GWC DATA.AI
+                  </p>
+                  <p className="text-center italic text-muted-foreground">
+                    "In an era obsessed with AI fantasy, I focus on what works.
+                    As Chief Strategy Officer at GWC DATA.AI, I lead with a
+                    simple principle: strategy must serve scale, speed, and
+                    trust. My work centers on building Trustable AI systems that
+                    are not only intelligent, but ethical, transparent, and
+                    grounded in reality. I bridge vision with execution,
+                    ensuring our solutions don’t just dazzle - they deliver. By
+                    aligning deep tech with deep purpose, I help enterprises
+                    move fast, stay focused, and lead with confidence in a world
+                    where efficiency is the ultimate innovation."
+                  </p>
+                  <div className="flex justify-center items-center mt-3 gap-4">
+                    <a
+                      href="https://www.linkedin.com/in/shashank-ravikumar-780649125/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Linkedin />
+                    </a>
+                    <a
+                      href="https://www.gwcdata.ai/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Globe />
                     </a>
                   </div>
@@ -509,9 +629,7 @@ const Index = () => {
                   <CardContent className="p-6">
                     <Quote className="mb-4 h-10 w-10 text-accent" />
                     <div className="mb-6">
-                      <p className="text-foreground/80">
-                        {testimonial.quote}
-                      </p>
+                      <p className="text-foreground/80">{testimonial.quote}</p>
                     </div>
                     <div>
                       <p className="font-semibold text-foreground">
@@ -542,7 +660,8 @@ const Index = () => {
                   Do I need technical skills to use AI rostering?
                 </AccordionTrigger>
                 <AccordionContent className="text-[#f68b63] font-semibold">
-                  No, it’s designed for HR and operations teams without coding knowledge.
+                  No, it’s designed for HR and operations teams without coding
+                  knowledge.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem
@@ -553,7 +672,8 @@ const Index = () => {
                   Can this work for my industry?
                 </AccordionTrigger>
                 <AccordionContent className="text-[#f68b63] font-semibold">
-                  Yes, AI rostering works for any industry it can easily fit your team’s scheduling needs.
+                  Yes, AI rostering works for any industry it can easily fit
+                  your team’s scheduling needs.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem
@@ -586,7 +706,8 @@ const Index = () => {
                   How quickly can AI rostering be implemented?
                 </AccordionTrigger>
                 <AccordionContent className="text-[#f68b63] font-semibold">
-                  AI rostering can be implemented and start delivering results within a few weeks.
+                  AI rostering can be implemented and start delivering results
+                  within a few weeks.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -606,7 +727,7 @@ const Index = () => {
               Join the AI Magic Rostering Masterclass and transform your
               workforce planning today
             </p>
-            
+
             <RegisterFormTwo selectedChallenges="" />
             {/* <p className="mt-6 text-sm text-primary-foreground/70">
               No credit card required • Completely free • Certificate included
