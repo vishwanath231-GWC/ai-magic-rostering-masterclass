@@ -28,10 +28,10 @@ import {
   Zap,
   Check,
 } from "lucide-react";
-import hostSubash from "@/assets/host-subash.jpg";
-import hostMamtha from "@/assets/host-mamtha.jpg";
+import hostSubash from "@/assets/host-subash.png";
+import hostMamtha from "@/assets/host-mamtha.png";
 import hostThree from "@/assets/host-three.jpg";
-import hostshashank from "@/assets/host-shashank.jpg";
+import hostshashank from "@/assets/host-shashank.png";
 import LOGO from "@/assets/logo.svg";
 import heroBackground from "@/assets/hero-background.jpg";
 import QuoteBox from "./QuoteBox";
@@ -536,7 +536,7 @@ const Index = () => {
                       <img
                         src={hostshashank}
                         alt="Mamtha - Assistant Director"
-                        className="h-48 w-48 object-cover object-top"
+                        className="h-48 w-48 object-cover object-center"
                       />
                     </div>
                   </div>
