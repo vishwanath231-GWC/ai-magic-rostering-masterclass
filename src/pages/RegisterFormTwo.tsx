@@ -11,13 +11,39 @@ import {
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Navigate, useNavigate } from "react-router-dom";
+
+interface FormData {
+  fullName: string;
+  phone: string;
+  email: string;
+  organization: string;
+  reason: string;
+}
+
+interface FormErrors {
+  fullName: string;
+  phone: string;
+  email: string;
+  organization: string;
+  reason: string;
+}
 
 const RegisterFormTwo = ({ selectedChallenges }: any) => {
+  const navigate = useNavigate();
   const SUPABASE_URL = "https://muxqrjyilrvgfxprxcfk.supabase.co";
   const SUPABASE_KEY =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11eHFyanlpbHJ2Z2Z4cHJ4Y2ZrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIyNTc2MjYsImV4cCI6MjA3NzgzMzYyNn0.dvR9jUnaDOuKlRDb7DO_Qgt7Ma7aMwggeHYif1pJvo0";
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
+    fullName: "",
+    phone: "",
+    email: "",
+    organization: "",
+    reason: "",
+  });
+
+  const [errors, setErrors] = useState<FormErrors>({
     fullName: "",
     phone: "",
     email: "",
@@ -27,16 +53,68 @@ const RegisterFormTwo = ({ selectedChallenges }: any) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
+    if (!name) return;
+
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
+    // Clear error when user starts typing
+    if (errors[name as keyof typeof errors]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: "",
+      }));
+    }
+  };
+
+  const validateForm = (): FormErrors => {
+    const newErrors: FormErrors = {
+      fullName: "",
+      phone: "",
+      email: "",
+      organization: "",
+      reason: "",
+    };
+
+    if (!formData.fullName.trim()) {
+      newErrors.fullName = "Full name is required";
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone is required";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email";
+    }
+
+    if (!formData.organization.trim()) {
+      newErrors.organization = "Organization is required";
+    }
+
+    if (!formData.reason.trim()) {
+      newErrors.reason = "Please tell us why you want to join";
+    }
+
+    return newErrors;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const newErrors = validateForm();
+
+    if (Object.values(newErrors).some((error) => error)) {
+      setErrors(newErrors);
+      return;
+    }
 
     try {
       const submitData = {
@@ -67,10 +145,17 @@ const RegisterFormTwo = ({ selectedChallenges }: any) => {
         return;
       }
 
-      alert("Registration successful! We'll be in touch soon.");
+      navigate("/success");
 
       setIsOpen(false);
       setFormData({
+        fullName: "",
+        phone: "",
+        email: "",
+        organization: "",
+        reason: "",
+      });
+      setErrors({
         fullName: "",
         phone: "",
         email: "",
@@ -89,7 +174,7 @@ const RegisterFormTwo = ({ selectedChallenges }: any) => {
         <Button
           size="lg"
           variant="secondary"
-          className="group h-14 gap-2 px-8 text-lg font-semibold shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+          className="group h-14 gap-2 px-8 md:text-lg text-md font-semibold shadow-lg transition-all hover:scale-105 hover:shadow-xl"
         >
           Register Now – Limited Seats Available
           <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -117,8 +202,15 @@ const RegisterFormTwo = ({ selectedChallenges }: any) => {
               value={formData.fullName}
               onChange={handleChange}
               placeholder="Full Name"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition ${
+                errors.fullName
+                  ? "border-red-500 focus:ring-red-500"
+                  : "border-gray-300 focus:ring-blue-500 focus:border-transparent"
+              }`}
             />
+            {errors.fullName && (
+              <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>
+            )}
           </div>
 
           {/* Phone */}
@@ -132,9 +224,15 @@ const RegisterFormTwo = ({ selectedChallenges }: any) => {
               value={formData.phone}
               onChange={handleChange}
               placeholder="Phone"
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition ${
+                errors.phone
+                  ? "border-red-500 focus:ring-red-500"
+                  : "border-gray-300 focus:ring-blue-500 focus:border-transparent"
+              }`}
             />
+            {errors.phone && (
+              <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+            )}
           </div>
 
           {/* Email */}
@@ -148,9 +246,15 @@ const RegisterFormTwo = ({ selectedChallenges }: any) => {
               value={formData.email}
               onChange={handleChange}
               placeholder="Email"
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition ${
+                errors.email
+                  ? "border-red-500 focus:ring-red-500"
+                  : "border-gray-300 focus:ring-blue-500 focus:border-transparent"
+              }`}
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+            )}
           </div>
 
           {/* Organization */}
@@ -164,9 +268,15 @@ const RegisterFormTwo = ({ selectedChallenges }: any) => {
               value={formData.organization}
               onChange={handleChange}
               placeholder="Organization"
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition ${
+                errors.organization
+                  ? "border-red-500 focus:ring-red-500"
+                  : "border-gray-300 focus:ring-blue-500 focus:border-transparent"
+              }`}
             />
+            {errors.organization && (
+              <p className="text-red-500 text-sm mt-1">{errors.organization}</p>
+            )}
           </div>
 
           {/* Reason */}
@@ -181,12 +291,18 @@ const RegisterFormTwo = ({ selectedChallenges }: any) => {
                 value={formData.reason}
                 onChange={handleChange}
                 placeholder="Tell us why you'd like to join..."
-                required
                 rows={4}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
+                className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 transition resize-none ${
+                  errors.reason
+                    ? "border-red-500 focus:ring-red-500"
+                    : "border-gray-300 focus:ring-blue-500 focus:border-transparent"
+                }`}
               />
               <MessageCircle className="absolute bottom-3 right-3 h-5 w-5 text-gray-400 pointer-events-none" />
             </div>
+            {errors.reason && (
+              <p className="text-red-500 text-sm mt-1">{errors.reason}</p>
+            )}
           </div>
 
           {/* Submit Button */}

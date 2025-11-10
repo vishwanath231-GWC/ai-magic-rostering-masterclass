@@ -117,7 +117,7 @@ const Index = () => {
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-secondary/95 to-accent/90" />
-        <div className="container relative mx-auto px-4">
+        <div className="container relative mx-auto px-4 pt-10 pb-20 md:pt-10 md:pb-0">
           <div className="flex justify-center items-center mb-10">
             <img src={LOGO} alt="LOGO" className="w-[250px]" />
           </div>
@@ -134,7 +134,7 @@ const Index = () => {
             <p className="mb-4 text-xl text-foreground/80 md:text-2xl">
               Learn how to build your first AI Agent for free
             </p>
-            <p className="mb-8 text-base text-foreground/70 md:text-lg whitespace-nowrap">
+            <p className="mb-8 text-base text-foreground/70 md:text-lg">
               Conducted by <span className="font-semibold">Subash (CTO)</span>,
               <span className="font-semibold">
                 {" "}
@@ -726,7 +726,7 @@ const Index = () => {
       {/* Final CTA */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-4xl rounded-2xl bg-gradient-to-br from-primary to-primary/80 p-12 text-center shadow-2xl">
+          <div className="mx-auto max-w-4xl rounded-2xl bg-gradient-to-br from-primary to-primary/80 p-12 text-center shadow-2xl justify-center items-center">
             <Calendar className="mx-auto mb-6 h-16 w-16 text-primary-foreground" />
             <h2 className="mb-4 text-3xl font-bold text-primary-foreground md:text-4xl">
               Ready to Build Your First AI Agent?
