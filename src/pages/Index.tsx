@@ -26,7 +26,6 @@ import {
   AlertCircle,
   Eye,
   Zap,
-  Check,
 } from "lucide-react";
 import hostSubash from "@/assets/host-subash.png";
 import hostMamtha from "@/assets/host-mamtha.png";
@@ -38,6 +37,8 @@ import QuoteBox from "./QuoteBox";
 import { useState } from "react";
 import RegisterForm from "./RegisterForm";
 import RegisterFormTwo from "./RegisterFormTwo";
+import EventTime from "./EventTime";
+import WebinarPopup from "./WebinarPopup";
 
 const Index = () => {
   const scrollToRegister = () => {
@@ -117,7 +118,7 @@ const Index = () => {
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-secondary/95 to-accent/90" />
-        <div className="container relative mx-auto px-4 pt-10 pb-20 md:pt-10 md:pb-0">
+        <div className="container relative mx-auto px-4 pb-20 md:pb-0">
           <div className="flex justify-center items-center mb-10">
             <img src={LOGO} alt="LOGO" className="w-[250px]" />
           </div>
@@ -125,13 +126,13 @@ const Index = () => {
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-background/50 px-4 py-2 backdrop-blur-sm">
               <Sparkles className="h-4 w-4 text-primary" />
               <span className="text-sm font-medium text-foreground">
-                Free Masterclass • Limited Seats
+                Masterclass • Limited Seats
               </span>
             </div>
             <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground md:text-6xl">
               AI Magic Rostering Masterclass
             </h1>
-            <p className="mb-4 text-xl text-foreground/80 md:text-2xl">
+            <p className="mb-4 text-xl text-foreground/80 md:text-xl">
               Learn how to build your first AI Agent for free
             </p>
             <p className="mb-8 text-base text-foreground/70 md:text-lg">
@@ -148,10 +149,88 @@ const Index = () => {
               <span className="font-semibold"> Shashank Ravikumar (CSO)</span>.
             </p>
 
-            <RegisterForm selectedChallenges="" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-2xl mx-auto">
+              <div
+                className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-xl p-4"
+              >
+                <div className="flex items-center gap-3">
+                  <Calendar className="w-5 h-5 text-purple-600" />
+                  <div>
+                    <p className="text-xs text-left text-gray-600 font-semibold uppercase">
+                      Date
+                    </p>
+                    <p className="text-lg font-bold text-gray-900">
+                      November 26 (Wednesday)
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-4"
+              >
+                <div className="flex items-center gap-3">
+                  <Clock className="w-5 h-5 text-blue-600" />
+                  <div>
+                    <p className="text-xs text-left text-gray-600 font-semibold uppercase">
+                      Time
+                    </p>
+                    <p className="text-lg font-bold text-gray-900">
+                      11:00 PM IST / 12:30 PM ET
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className=" flex justify-center items-center">
+              <div
+                className="w-fit bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-300 rounded-xl p-4 mb-6"
+              >
+                <div className="flex items-start gap-3">
+                  <Users className="w-5 h-5 text-amber-600 mt-1" />
+                  <div>
+                    <p className="font-bold text-gray-900 mb-1">
+                      Early Bird Offer — Limited Seats Available
+                    </p>
+                    <p className="text-sm text-gray-700 mb-1">
+                      Enjoy{" "}
+                      <span className="font-semibold text-amber-700">
+                        50 free seats
+                      </span>{" "}
+                      exclusively for early registrants.
+                    </p>
+                    <p className="text-sm text-gray-700">
+                      Additional attendees can join for only{" "}
+                      <span className="font-semibold text-amber-700">
+                        $9 per seat
+                      </span>
+                      .
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a
+              href="https://events.teams.microsoft.com/event/379a03f6-562b-46ac-a43b-ab9d9a345f79@0ef854d9-b367-45e6-bf60-9b44cb293f84/registration"
+              target="_blank"
+            >
+              <Button
+                size="lg"
+                className="group h-14 gap-2 px-8 md:text-lg text-md font-semibold shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+              >
+                Reserve Your Spot Now
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </a>
+            {/* <RegisterForm selectedChallenges="" /> */}
           </div>
         </div>
       </section>
+
+      {/* The Popup */}
+      {/* <WebinarPopup /> */}
 
       {/* Video Teaser Section */}
       <section className="py-16 md:py-24">
@@ -193,8 +272,8 @@ const Index = () => {
               This masterclass introduces the concept of{" "}
               <span className="font-bold text-black">AI-Powered Rostering</span>{" "}
               and how it transforms Workforce Planning, Scheduling, and
-              Productivity. Participants will gain hands-on experience building
-              their first AI agent completely FREE OF COST.
+              Productivity. Participants will gain the knowledge and skills to build
+              their <b className="text-black">first AI agent</b> completely <b className="text-black">FREE OF COST</b>.
             </p>
           </div>
         </div>
@@ -228,11 +307,6 @@ const Index = () => {
                     "Understand applications across multiple industries",
                 },
                 {
-                  icon: Gift,
-                  title: "Three Pre-Built Agents",
-                  description: "Get instant access to ready-to-use AI agents",
-                },
-                {
                   icon: Laptop,
                   title: "Test Environment",
                   description:
@@ -243,6 +317,11 @@ const Index = () => {
                   title: "Certificate",
                   description: "Receive a digital certificate of participation",
                 },
+                {
+                  icon: Gift,
+                  title: "Revealed on the event day",
+                  description: "Get instant access to ready-to-use AI agents",
+                },
               ].map((benefit, index) => (
                 <Card
                   key={index}
@@ -250,7 +329,7 @@ const Index = () => {
                 >
                   <CardContent className="flex flex-col items-center p-6 text-center">
                     <div className="mb-4 rounded-full bg-accent/50 p-3 transition-colors group-hover:bg-primary/10">
-                      <benefit.icon className="h-8 w-8 text-primary" />
+                      <benefit.icon className={`h-8 w-8 ${benefit.title === "Revealed on the event day" ? "text-orange-500" : "text-primary "}`} />
                     </div>
                     <h3 className="mb-2 text-xl font-semibold text-foreground">
                       {benefit.title}
@@ -322,6 +401,20 @@ const Index = () => {
                 );
               })}
             </div>
+          </div>
+          <div className="flex justify-center items-center mt-10">
+            <a
+              href="https://events.teams.microsoft.com/event/379a03f6-562b-46ac-a43b-ab9d9a345f79@0ef854d9-b367-45e6-bf60-9b44cb293f84/registration"
+              target="_blank"
+            >
+              <Button
+                size="lg"
+                className="group h-14 gap-2 px-8 md:text-lg text-md font-semibold shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+              >
+                Claim Your Spot Now
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </a>
           </div>
         </div>
       </section>
@@ -596,11 +689,24 @@ const Index = () => {
               Post-Session Access
             </h2>
             <p className="text-lg text-foreground/80">
-              All participants will receive exclusive access to three pre-built
-              AI agents and a secure test environment for continued
+              All participants will receive exclusive access to a secure test environment for continued
               experimentation and learning. Put your new skills to work
               immediately after the session!
             </p>
+          </div>
+          <div className="flex justify-center items-center mt-10">
+            <a
+              href="https://events.teams.microsoft.com/event/379a03f6-562b-46ac-a43b-ab9d9a345f79@0ef854d9-b367-45e6-bf60-9b44cb293f84/registration"
+              target="_blank"
+            >
+              <Button
+                size="lg"
+                className="group h-14 gap-2 px-8 md:text-lg text-md font-semibold shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+              >
+                Lock In Your Seat Now
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </a>
           </div>
         </div>
       </section>
@@ -736,7 +842,21 @@ const Index = () => {
               workforce planning today
             </p>
 
-            <RegisterFormTwo selectedChallenges="" />
+            <a
+              href="https://events.teams.microsoft.com/event/379a03f6-562b-46ac-a43b-ab9d9a345f79@0ef854d9-b367-45e6-bf60-9b44cb293f84/registration"
+              target="_blank"
+            >
+              <Button
+                size="lg"
+                variant="secondary"
+                className="group h-14 gap-2 px-8 md:text-lg text-md font-semibold shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+              >
+                Register Now – Limited Seats Available
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </a>
+
+            {/* <RegisterFormTwo selectedChallenges="" /> */}
             {/* <p className="mt-6 text-sm text-primary-foreground/70">
               No credit card required • Completely free • Certificate included
             </p> */}
