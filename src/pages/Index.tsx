@@ -106,39 +106,38 @@ const Index = () => {
     .map(([id]) => challenges.find((c) => c.id === id)?.label)
     .join("; ");
 
-    const smoothScrollTo = (targetY, duration = 1200) => {
-  const startY = window.pageYOffset;
-  const distance = targetY - startY;
-  let startTime = null;
+  const smoothScrollTo = (targetY, duration = 1200) => {
+    const startY = window.pageYOffset;
+    const distance = targetY - startY;
+    let startTime = null;
 
-  const animation = (currentTime) => {
-    if (!startTime) startTime = currentTime;
-    const timeElapsed = currentTime - startTime;
+    const animation = (currentTime) => {
+      if (!startTime) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
 
-    // Ease function (easeInOutQuad)
-    const progress = Math.min(timeElapsed / duration, 1);
-    const ease =
-      progress < 0.5
-        ? 2 * progress * progress
-        : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+      // Ease function (easeInOutQuad)
+      const progress = Math.min(timeElapsed / duration, 1);
+      const ease =
+        progress < 0.5
+          ? 2 * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
 
-    window.scrollTo(0, startY + distance * ease);
+      window.scrollTo(0, startY + distance * ease);
 
-    if (timeElapsed < duration) requestAnimationFrame(animation);
+      if (timeElapsed < duration) requestAnimationFrame(animation);
+    };
+
+    requestAnimationFrame(animation);
   };
-
-  requestAnimationFrame(animation);
-};
 
   const footerRef = useRef(null);
 
   const scrollToFooter = () => {
-  const targetPosition =
-    footerRef.current.getBoundingClientRect().top + window.pageYOffset;
+    const targetPosition =
+      footerRef.current.getBoundingClientRect().top + window.pageYOffset;
 
-  smoothScrollTo(targetPosition, 4000); // 1500ms = slower scroll
-};
-
+    smoothScrollTo(targetPosition, 4000); // 1500ms = slower scroll
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -167,27 +166,12 @@ const Index = () => {
             <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground md:text-6xl">
               AI Magic Rostering Masterclass
             </h1>
-            <p className="mb-4 text-xl text-foreground/80 md:text-xl">
+            <p className="mb-8 text-xl text-foreground/80 md:text-xl">
               Learn how to build your first AI Agent for free
-            </p>
-            <p className="mb-8 text-base text-foreground/70 md:text-lg">
-              Conducted by <span className="font-semibold">Subash (CTO)</span>,
-              <span className="font-semibold">
-                {" "}
-                Mamtha (Associate Director)
-              </span>
-              ,<span className="font-semibold">
-                {" "}
-                Prasanna Srinivasan (COO)
-              </span>{" "}
-              and
-              <span className="font-semibold"> Shashank Ravikumar (CSO)</span>.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 max-w-2xl mx-auto">
-              <div
-                className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-xl p-4"
-              >
+              <div className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-xl p-4">
                 <div className="flex items-center gap-3">
                   <Calendar className="w-5 h-5 text-purple-600" />
                   <div>
@@ -200,12 +184,9 @@ const Index = () => {
                   </div>
                 </div>
               </div>
-
-              <div
-                className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-4"
-              >
+              <div className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-xl p-4">
                 <div className="flex items-center gap-3">
-                  <Clock className="w-5 h-5 text-blue-600" />
+                  <Clock className="w-5 h-5 text-purple-600" />
                   <div>
                     <p className="text-xs text-left text-gray-600 font-semibold uppercase">
                       Time
@@ -219,9 +200,7 @@ const Index = () => {
             </div>
 
             <div className=" flex justify-center items-center">
-              <div
-                className="w-fit bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-300 rounded-xl p-4 mb-6"
-              >
+              <div className="w-fit bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-300 rounded-xl p-4 mb-6">
                 <div className="flex items-start gap-3">
                   <Users className="w-5 h-5 text-amber-600 mt-1" />
                   <div>
@@ -247,14 +226,14 @@ const Index = () => {
               </div>
             </div>
 
-              <Button
-               onClick={scrollToFooter}
-                size="lg"
-                className="group h-14 gap-2 px-8 md:text-lg text-md font-semibold shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-              >
-                Book your spot
-                <ArrowDown className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Button>
+            <Button
+              onClick={scrollToFooter}
+              size="lg"
+              className="group h-14 gap-2 px-8 md:text-lg text-md font-semibold shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+            >
+              Book your spot
+              <ArrowDown className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </Button>
             {/* <RegisterForm selectedChallenges="" /> */}
           </div>
         </div>
@@ -301,10 +280,15 @@ const Index = () => {
             </h2>
             <p className="text-lg leading-relaxed text-foreground/80">
               This masterclass introduces the concept of{" "}
-              <span className="font-bold text-black">AI-Powered Rostering</span>{" "}
+              <span className="font-bold text-[#512b8a]">
+                AI-Powered Rostering
+              </span>{" "}
               and how it transforms Workforce Planning, Scheduling, and
-              Productivity. Participants will gain the knowledge and skills to build
-              their <b className="text-black">first AI agent</b> completely <b className="text-black">FREE OF COST</b>.
+              Productivity. Participants will gain the knowledge and skills to
+              build their{" "}
+              <b className="text-[#512b8a]">first AI agent</b>{" "}
+              completely{" "}
+              <b className="text-[#512b8a]">FREE OF COST</b>.
             </p>
           </div>
         </div>
@@ -350,26 +334,47 @@ const Index = () => {
                 },
                 {
                   icon: Gift,
-                  title: "Revealed on the event day",
-                  description: "Get instant access to ready-to-use AI agents",
+                  title: "Exclusive reveal in the webinar",
+                  description: "",
                 },
               ].map((benefit, index) => (
-                <Card
-                  key={index}
-                  className="group border-border transition-all hover:border-primary hover:shadow-lg"
-                >
-                  <CardContent className="flex flex-col items-center p-6 text-center">
-                    <div className="mb-4 rounded-full bg-accent/50 p-3 transition-colors group-hover:bg-primary/10">
-                      <benefit.icon className={`h-8 w-8 ${benefit.title === "Revealed on the event day" ? "text-orange-500" : "text-primary "}`} />
-                    </div>
-                    <h3 className="mb-2 text-xl font-semibold text-foreground">
-                      {benefit.title}
-                    </h3>
-                    <p className="text-muted-foreground">
-                      {benefit.description}
-                    </p>
-                  </CardContent>
-                </Card>
+                <>
+                  {benefit.title === "Exclusive reveal in the webinar" ? (
+                    <Card
+                      key={index}
+                      className="border-chase rounded-lg bg-slate-800"
+                    >
+                      <CardContent className="flex flex-col items-center p-6 text-center">
+                        <div className="mb-4 rounded-full bg-accent/50 p-5 transition-colors group-hover:bg-primary/10">
+                          <benefit.icon className={`h-11 w-11 animate-zoom-in-out text-orange-500`} />
+                        </div>
+                        <h3 className="mb-2 text-xl font-semibold text-foreground">
+                          {benefit.title}
+                        </h3>
+                        <p className="text-muted-foreground">
+                          {benefit.description}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  ) : (
+                    <Card
+                      key={index}
+                      className="group border-border transition-all hover:border-primary hover:shadow-lg"
+                    >
+                      <CardContent className="flex flex-col items-center p-6 text-center">
+                        <div className="mb-4 rounded-full bg-accent/50 p-3 transition-colors group-hover:bg-primary/10">
+                          <benefit.icon className={`h-8 w-8 text-primary`} />
+                        </div>
+                        <h3 className="mb-2 text-xl font-semibold text-foreground">
+                          {benefit.title}
+                        </h3>
+                        <p className="text-muted-foreground">
+                          {benefit.description}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  )}
+                </>
               ))}
             </div>
           </div>
@@ -525,7 +530,7 @@ const Index = () => {
                     </div>
                   </div>
                   <h3 className="mb-2 text-center text-2xl font-bold text-foreground">
-                    Subash
+                    Subash Ramu
                   </h3>
                   <p className="mb-4 text-center text-lg font-medium text-primary">
                     Chief Technology Officer, GWC DATA.AI
@@ -572,7 +577,7 @@ const Index = () => {
                     </div>
                   </div>
                   <h3 className="mb-2 text-center text-2xl font-bold text-foreground">
-                    Mamtha
+                    Mamtha Shanmugam
                   </h3>
                   <p className="mb-4 text-center text-lg font-medium text-primary">
                     Associate Director, GWC DATA.AI
@@ -720,9 +725,11 @@ const Index = () => {
               Post-Session Access
             </h2>
             <p className="text-lg text-foreground/80">
-              All participants will receive exclusive access to a secure test environment for continued
-              experimentation and learning. Put your new skills to work
-              immediately after the session!
+              All participants will receive exclusive access to a secure test
+              environment for continued experimentation and learning, and an <b className="font-semibold text-[#512b8a]">exclusive reveal during the webinar</b>.
+            </p>
+            <p className="text-lg text-foreground/80">
+             Put your new skills to work immediately after the session!
             </p>
           </div>
           <div className="flex justify-center items-center mt-10">
@@ -747,7 +754,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-6xl">
             <h2 className="mb-12 text-center text-3xl font-bold text-foreground md:text-4xl">
-              What Participants Say
+              What Clients Say
             </h2>
             <div className="grid gap-8 md:grid-cols-3">
               {[
