@@ -26,6 +26,7 @@ import {
   AlertCircle,
   Eye,
   Zap,
+  ArrowDown,
 } from "lucide-react";
 import hostSubash from "@/assets/host-subash.png";
 import hostMamtha from "@/assets/host-mamtha.png";
@@ -33,12 +34,12 @@ import hostThree from "@/assets/host-three.jpg";
 import hostshashank from "@/assets/host-shashank.png";
 import LOGO from "@/assets/logo.svg";
 import heroBackground from "@/assets/hero-background.jpg";
-import QuoteBox from "./QuoteBox";
-import { useState } from "react";
-import RegisterForm from "./RegisterForm";
-import RegisterFormTwo from "./RegisterFormTwo";
-import EventTime from "./EventTime";
-import WebinarPopup from "./WebinarPopup";
+// import QuoteBox from "./QuoteBox";
+import { useRef, useState } from "react";
+// import RegisterForm from "./RegisterForm";
+// import RegisterFormTwo from "./RegisterFormTwo";
+// import EventTime from "./EventTime";
+// import WebinarPopup from "./WebinarPopup";
 
 const Index = () => {
   const scrollToRegister = () => {
@@ -104,6 +105,40 @@ const Index = () => {
     .filter(([, checked]) => checked)
     .map(([id]) => challenges.find((c) => c.id === id)?.label)
     .join("; ");
+
+    const smoothScrollTo = (targetY, duration = 1200) => {
+  const startY = window.pageYOffset;
+  const distance = targetY - startY;
+  let startTime = null;
+
+  const animation = (currentTime) => {
+    if (!startTime) startTime = currentTime;
+    const timeElapsed = currentTime - startTime;
+
+    // Ease function (easeInOutQuad)
+    const progress = Math.min(timeElapsed / duration, 1);
+    const ease =
+      progress < 0.5
+        ? 2 * progress * progress
+        : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+
+    window.scrollTo(0, startY + distance * ease);
+
+    if (timeElapsed < duration) requestAnimationFrame(animation);
+  };
+
+  requestAnimationFrame(animation);
+};
+
+  const footerRef = useRef(null);
+
+  const scrollToFooter = () => {
+  const targetPosition =
+    footerRef.current.getBoundingClientRect().top + window.pageYOffset;
+
+  smoothScrollTo(targetPosition, 4000); // 1500ms = slower scroll
+};
+
 
   return (
     <div className="min-h-screen bg-background">
@@ -212,18 +247,14 @@ const Index = () => {
               </div>
             </div>
 
-            <a
-              href="https://events.teams.microsoft.com/event/379a03f6-562b-46ac-a43b-ab9d9a345f79@0ef854d9-b367-45e6-bf60-9b44cb293f84/registration"
-              target="_blank"
-            >
               <Button
+               onClick={scrollToFooter}
                 size="lg"
                 className="group h-14 gap-2 px-8 md:text-lg text-md font-semibold shadow-lg transition-all hover:scale-105 hover:shadow-xl"
               >
-                Reserve Your Spot Now
-                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                Book your spot
+                <ArrowDown className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
-            </a>
             {/* <RegisterForm selectedChallenges="" /> */}
           </div>
         </div>
@@ -830,7 +861,7 @@ const Index = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24" ref={footerRef}>
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl rounded-2xl bg-gradient-to-br from-primary to-primary/80 p-12 text-center shadow-2xl justify-center items-center">
             <Calendar className="mx-auto mb-6 h-16 w-16 text-primary-foreground" />
