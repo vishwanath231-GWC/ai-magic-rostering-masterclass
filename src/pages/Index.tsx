@@ -139,7 +139,7 @@ const Index = () => {
               Conducted by <span className="font-semibold">Subash (CTO)</span>,
               <span className="font-semibold">
                 {" "}
-                Mamtha (Assistant Director)
+                Mamtha (Associate Director)
               </span>
               ,<span className="font-semibold">
                 {" "}
